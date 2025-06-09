@@ -24,7 +24,8 @@ This is a visually appealing and fully responsive landing page designed for prom
 
 ## 📷 Preview
 
-> _Include screenshots or a GIF here if hosting online, or mention a link to the live preview._
+![Screenshot 2025-06-09 232334](https://github.com/user-attachments/assets/9ed42304-6efa-48bf-a8a5-53c92c4c9bed)
+
 
 ## 📁 How to Use
 
