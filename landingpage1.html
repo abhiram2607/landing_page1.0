@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PraRoz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #ccc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .background {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            z-index: 0;
+        }
+
+        .background-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        header {
+            background-color:rgba(0, 0, 0, 0.5); /*for header transparency*/
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff8102;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li a {
+            margin-right: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            color: #ff8102;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+
+        .search-bar input::placeholder {
+            color: white;
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff8102;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-bar button:hover {
+            background-color: #79471e;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 100px;
+            /* Adjusted for fixed header */
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1200px;
+            width: 90%;
+            padding: 50px 0;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            margin-right: 50px;
+            padding-top: 50px;
+        }
+
+        .hero-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .join-us-btn {
+            padding: 15px 30px;
+            background-color: #ff8102;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .join-us-btn:hover {
+            background-color: #ff8102;
+        }
+
+        .login-container {
+            flex: 0 0 auto;
+            width: 350px;
+            margin-left: auto;
+            position: relative;
+        }
+
+        .login-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .login-here-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #f5f3f1;
+            color: #ff8102;
+            border: none;
+            border-radius: 8px;
+            font-size: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-here-btn:hover {
+            background-color: #4b4a4a;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            border: none;
+            border-bottom: 2px solid #ccc;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .input-group input::placeholder {
+            color: #aaa;
+        }
+
+        .input-group input:focus {
+            border-bottom-color: #ff8102;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff8102;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #e05e00;
+        }
+
+        .signup-text {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .signup-text a {
+            color: #ff8102;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .signup-text a:hover {
+            color: #e05e00;
+            text-decoration: underline;
+        }
+
+        .social-login p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #ccc
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background-color: #ff8102;
+        }
+
+        .social-icon img {
+            width: 24px;
+            height: 24px;
+            filter: invert(100%);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin-right: 0;
+                margin-bottom: 50px;
+                padding-top: 0;
+            }
+
+            .login-container {
+                margin-left: 0;
+                width: 80%;
+                max-width: 350vw;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            .search-bar {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .search-bar input {
+                width: 60%;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .login-box {
+                padding: 20px;
+            }
+
+            .login-here-btn,
+            .login-btn {
+                font-size: 16px;
+                padding: 12px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="background">
+        <header>
+            <nav>
+                <div class="logo">PraRoz</div>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">SERVICES</a></li>
+                    <li><a href="#">DESIGN</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+                <div class="search-bar">
+                    <input type="text" placeholder="Type to Search" />
+                    <button type="submit">Search</button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Web Design & <br /> Development </br> Course</h1>
+                    <p>Web design is good of the design stream. They also use HTML, CSS, WYSIWYG editing software,
+                        markup validators etc., to create design elements.</p>
+                    <button class='join-us-btn'>JOIN US</button>
+                </div>
+                <div class="'login-container">
+                    <div class="login-box">
+                        <button class="login-here-btn">WELCOME <span style="font-size:2rem;">&#x1F600;</span></button>
+
+
+
+                        <form action="login.aspx" method="post">
+                            <div class="input-group">
+                                <input type="email" placeholder="Enter your Email here" &nsbsp required>
+                            </div>
+                            <div class="input-group">
+                                <input type="password" placeholder="Enter your password here" required>
+                            </div>
+                            <button type="submit" class="login-btn">Login</button>
+                        </form>
+
+                        <p class="signup-text">Don't have an account? <a href="#">Sign Up</a></p>
+                        <div class="social-login">
+                            <!-- Social login section -->
+                            <p>Log in with</p>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg"
+                                        alt="Facebook" />
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg"
+                                        alt="Instagram" />
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg"
+                                        alt="Google" />
+                                    <a href="#" class="social-icon">
+                                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg"
+                                            alt="twitter" />
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/skype.svg"
+                                            alt="skype" />
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
